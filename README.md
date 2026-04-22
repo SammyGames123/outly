@@ -1,6 +1,6 @@
-# outly.app
+# spilltop.com
 
-Static site for [outly.app](https://outly.app) — landing page plus legal pages (Terms, Privacy, Community Guidelines). Served from GitHub Pages.
+Static site for [spilltop.com](https://spilltop.com) — landing page plus legal pages (Terms, Privacy, Community Guidelines) and Support. Designed for a simple GitHub + Cloudflare Pages deploy.
 
 ## Structure
 
@@ -9,29 +9,22 @@ Static site for [outly.app](https://outly.app) — landing page plus legal pages
 /terms            → Terms of Service
 /privacy          → Privacy Policy
 /guidelines       → Community Guidelines
+/support          → Support contact
 /assets/styles.css  shared stylesheet
-CNAME             custom domain (outly.app)
 .nojekyll         disables Jekyll processing
 ```
 
-Each legal page lives in its own folder with an `index.html`, so the URLs match `outly.app/terms` (no `.html` suffix).
+Each page lives in its own folder with an `index.html`, so the URLs match `spilltop.com/terms` (no `.html` suffix).
 
 ## Deploying
 
 1. Push to `main`.
-2. In the repo: **Settings → Pages** → source **Deploy from a branch** → branch **main** → folder **/ (root)** → Save.
-3. Wait ~30 seconds. GitHub will show the live URL at the top of the Pages panel.
-4. The `CNAME` file points GitHub Pages at `outly.app`. Create these DNS records at your registrar:
-
-   | Type  | Host    | Value                    |
-   |-------|---------|--------------------------|
-   | A     | @       | 185.199.108.153          |
-   | A     | @       | 185.199.109.153          |
-   | A     | @       | 185.199.110.153          |
-   | A     | @       | 185.199.111.153          |
-   | CNAME | www     | sammygames123.github.io. |
-
-5. Back on the Pages panel, enable **Enforce HTTPS** once the certificate finishes provisioning (can take 15–30 minutes after DNS resolves).
+2. In Cloudflare: **Workers & Pages → Create → Pages → Connect to Git**.
+3. Select this repo.
+4. Build command: leave empty.
+5. Build output directory: `/`.
+6. Add custom domains: `spilltop.com` and `www.spilltop.com`.
+7. Wait for Cloudflare to create the DNS records and SSL certificate.
 
 ## Editing
 
